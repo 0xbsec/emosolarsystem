@@ -3,16 +3,8 @@ import styled, {keyframes} from 'styled-components'
 
 import {Sizes, Distances} from './Config';
 
-const Orbit = keyframes`
-  from { transform: rotate(0deg) translateX(${Distances.Moon}em) rotate(0deg); }
-  to   { transform: rotate(360deg) translateX(${Distances.Moon}em) rotate(-360deg); }
- `;
-
-
 const Moon = styled.div`
   font-size: ${Sizes.Moon}em;
-  position: absolute;
-  /*animation: ${Orbit} 10s linear infinite;*/
 `;
 
 function Component() {

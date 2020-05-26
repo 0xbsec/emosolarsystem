@@ -3,15 +3,12 @@ import styled, {keyframes} from 'styled-components'
 
 import {Sizes, Distances} from './Config';
 
-const Orbit = keyframes`
-  from { transform: rotate(0deg) translateX(${Distances.Earth}em) rotate(0deg); }
-  to   { transform: rotate(360deg) translateX(${Distances.Earth}em) rotate(-360deg); }
- `;
-
 const Earth = styled.div`
   font-size: ${Sizes.Earth}em;
+
   position: absolute;
-  /*animation: ${Orbit} 30s linear infinite;*/
+  top: 50%;
+  left: 0;
 `;
 
 function Component() {
