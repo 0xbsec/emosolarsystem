@@ -1,0 +1,18 @@
+- DRY the app
+- DRY sizes & config
+- DRY css using styled components
+
+- check way to simplify the rotation animation (maybe using http://css3.bradshawenterprises.com/cfimg/)
+
+- add other planets that have emoji
+- add background stars (using emoji as well) (font size 1px):   from {opacity: 1}
+  to {opacity: 0.2}
+
+
+
+
+- add 🛰️, 🚀 and ☄️
+
+- add 👾
+
+- add man and woman astronauts that are lost in space
