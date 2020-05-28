@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react';
 import styled, {keyframes} from 'styled-components'
 
 import {Sizes, Distances} from './Config';
+import {circlePath, useWindowSize} from './AnimationHelpers';
 
-const Moon = styled.div`
-  font-size: ${Sizes.Moon}em;
+const Moon = styled.text`
+  font-size: ${Sizes.Moon}px;
 `;
 
 function Component() {
-  const DELAY = 270
+  const DELAY = 400
+  const size = useWindowSize()
 
   const IMAGES = [
     '🌑',
@@ -37,7 +39,12 @@ function Component() {
 
 
   return (
-    <Moon>
+    <Moon x={(size.width - Sizes.Moon) / 2} y={(size.height + Sizes.Moon) / 2}>
+      <animateMotion
+        dur="1.2s"
+        repeatCount="indefinite"
+        path={circlePath(75)}
+      />
       {IMAGES[currentImgIdx]}
     </Moon>
   );

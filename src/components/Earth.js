@@ -2,17 +2,16 @@ import React, {useEffect, useState} from 'react';
 import styled, {keyframes} from 'styled-components'
 
 import {Sizes, Distances} from './Config';
+import Moon from './Moon';
+import {circlePath, useWindowSize} from './AnimationHelpers';
 
-const Earth = styled.div`
-  font-size: ${Sizes.Earth}em;
-
-  position: absolute;
-  top: 50%;
-  left: 0;
+const Earth = styled.text`
+  font-size: ${Sizes.Earth}px;
 `;
 
 function Component() {
-  const DELAY = 270
+  const DELAY = 150
+  const size = useWindowSize()
 
   const IMAGES = [
     '🌍',
@@ -34,10 +33,22 @@ function Component() {
     return () => clearInterval(timer);
   }, [currentImgIdx]);
 
+// {IMAGES[currentImgIdx]}
+
   return (
-    <Earth>
-      {IMAGES[currentImgIdx]}
-    </Earth>
+      <g id="earth-moon">
+        <Earth x={(size.width - Sizes.Earth) / 2} y={(size.height + Sizes.Earth) / 2}>
+          {IMAGES[currentImgIdx]}
+        </Earth>
+
+        <animateMotion
+          dur="10s"
+          repeatCount="indefinite"
+          path={circlePath(300)}
+        />
+
+        <Moon />
+      </g>
   );
 }
 

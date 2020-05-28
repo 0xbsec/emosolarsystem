@@ -2,31 +2,26 @@ import React, {useEffect, useState} from 'react';
 import styled, {keyframes} from 'styled-components'
 
 import {Sizes} from './Config';
+import {useWindowSize} from './AnimationHelpers';
 
 const Shine = keyframes`
   to {
-    transform: scale(1.1);
+    transform: scale(1.01);
   }
  `;
 
-const Sun = styled.div`
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -100px;
-  margin-left: -100px;
-
-  font-size: ${Sizes.Sun}em;
+const Sun = styled.text`
+  font-size: ${Sizes.Sun}px;
 
   animation: ${Shine} 4s infinite alternate;
 `;
 
 function Component() {
+  const size = useWindowSize()
+
   return (
-    <Sun>
-     ☀️
+    <Sun x={(size.width - Sizes.Sun) / 2} y={(size.height + Sizes.Sun) / 2}>
+      ☀️
     </Sun>
   );
 }
