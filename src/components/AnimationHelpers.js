@@ -31,3 +31,21 @@ export const useWindowSize = () => {
 
   return windowSize;
 }
+
+export const useRotation = (delay, images) => {
+  const [currentImgIdx, setCurrentImgIdx] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      let nextIndex = currentImgIdx + 1;
+
+      if (nextIndex >= images.length) {
+        nextIndex = 0;
+      }
+      setCurrentImgIdx(nextIndex)
+    }, delay);
+    return () => clearInterval(timer);
+  }, [currentImgIdx]);
+
+  return images[currentImgIdx]
+}

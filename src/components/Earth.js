@@ -1,44 +1,37 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled, {keyframes} from 'styled-components'
 
 import {Sizes, Distances} from './Config';
 import Moon from './Moon';
-import {circlePath, useWindowSize} from './AnimationHelpers';
+import {circlePath, useWindowSize, useRotation} from './AnimationHelpers';
 
 const Earth = styled.text`
   font-size: ${Sizes.Earth}vmin;
 `;
 
 function Component() {
-  const DELAY = 150
   const size = useWindowSize()
 
-  const IMAGES = [
-    '🌍',
-    '🌎',
-    '🌏',
-  ]
+  const currentImg = useRotation(150, ['🌍', '🌎', '🌏'])
 
-  const [currentImgIdx, setCurrentImgIdx] = useState(0)
+  const planetRef = useRef(null)
+  const [x, setX] = useState(size.width / 2)
+  const [y, setY] = useState(size.height / 2)
+  // tComputedTextLength()
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      let nextIndex = currentImgIdx + 1;
+    let bbox = planetRef.current.getBBox()
 
-      if (nextIndex >= IMAGES.length) {
-        nextIndex = 0;
-      }
-      setCurrentImgIdx(nextIndex)
-    }, DELAY);
-    return () => clearInterval(timer);
-  }, [currentImgIdx]);
+    setX((size.width - bbox.width) / 2)
+  }, [size]);
+
 
 // {IMAGES[currentImgIdx]}
 
   return (
       <g id="earth-moon">
-        <Earth x={(size.width - Sizes.Earth) / 2} y={(size.height + Sizes.Earth) / 2}>
-          {IMAGES[currentImgIdx]}
+        <Earth ref={planetRef} x={x} y={y}>
+          {currentImg}
         </Earth>
 
         <animateMotion

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import styled, {keyframes} from 'styled-components'
 
 import {Sizes} from './Config';
@@ -18,9 +18,19 @@ const Sun = styled.text`
 
 function Component() {
   const size = useWindowSize()
+  const planetRef = useRef(null)
+  const [x, setX] = useState(size.width / 2)
+  const [y, setY] = useState(size.height / 2)
+
+  useEffect(() => {
+    let bbox = planetRef.current.getBBox()
+
+    setX((size.width - bbox.width) / 2)
+    // setY((size.height + bbox.height) / 2)
+  }, [size]);
 
   return (
-    <Sun x={(size.width - Sizes.Sun) / 2} y={(size.height + Sizes.Sun) / 2}>
+    <Sun ref={planetRef} x={x} y={y}>
       ☀️
     </Sun>
   );
