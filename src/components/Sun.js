@@ -13,7 +13,7 @@ const Shine = keyframes`
 const Sun = styled.text`
   font-size: ${Sizes.Sun}vmin;
 
-  animation: ${Shine} 1s infinite alternate;
+  animation: ${Shine} 3s infinite alternate;
   transform-origin: center;
 `;
 

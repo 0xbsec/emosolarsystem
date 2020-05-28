@@ -4,12 +4,6 @@ import styled, {keyframes} from 'styled-components'
 import {Sizes} from './Config';
 import {circlePath, useWindowSize, useRotation} from './AnimationHelpers';
 
-const Shine = keyframes`
-  to {
-    transform: scale(2);
-  }
-`;
-
 const rand = (n) => Math.floor(Math.random() * n)
 
 function Component() {
@@ -22,7 +16,6 @@ function Component() {
   const y = rand(size.height)
 
   const Star = styled.text`
-    // animation: ${Shine} 1s infinite alternate;
     font-size: ${rand(10)}px;
     opacity: .${rand(5)};
   `;
@@ -30,7 +23,12 @@ function Component() {
   return (
     <Star x={x} y={y}>
       <animateMotion
-        dur="1.2s"
+        attributeName="transform" 
+        attributeType="XML"
+        type="rotate"
+        from="0 75 75"
+        to="100 75 75" 
+        dur="30s"
         repeatCount="indefinite"
       />
       {STAR}
