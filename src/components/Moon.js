@@ -21,13 +21,14 @@ function Component() {
     let bbox = planetRef.current.getBBox()
 
     setX((size.width - bbox.width) / 2)
+    setY((size.height + bbox.height / 2) / 2)
   }, [size]);
 
 
   return (
     <Moon ref={planetRef} x={x} y={y}>
       <animateMotion
-        dur="1.2s"
+        dur="4s"
         repeatCount="indefinite"
         path={circlePath(Math.min(size.width, size.height) / 10)}
       />

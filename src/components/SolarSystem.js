@@ -2,16 +2,22 @@ import React from 'react';
 import styled, {keyframes} from 'styled-components'
 
 import Earth from './Earth';
-import Moon from './Moon';
 import Sun from './Sun';
+import Junk from './Junk';
+
+const SolarSystem = styled.svg`
+  background: black;
+`;
 
 function Component() {
   return (
-    <svg width="100%" height="100%">
+    <SolarSystem width="100%" height="100%">
+      <Junk />
+
       <Sun />
 
       <Earth />
-    </svg>
+    </SolarSystem>
   );
 }
 

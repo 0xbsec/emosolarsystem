@@ -12,7 +12,7 @@ const Earth = styled.text`
 function Component() {
   const size = useWindowSize()
 
-  const currentImg = useRotation(150, ['🌍', '🌎', '🌏'])
+  const currentImg = useRotation(300, ['🌍', '🌎', '🌏'])
 
   const planetRef = useRef(null)
   const [x, setX] = useState(size.width / 2)
@@ -23,6 +23,7 @@ function Component() {
     let bbox = planetRef.current.getBBox()
 
     setX((size.width - bbox.width) / 2)
+    setY((size.height + bbox.height / 2) / 2)
   }, [size]);
 
 

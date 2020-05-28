@@ -6,14 +6,15 @@ import {useWindowSize} from './AnimationHelpers';
 
 const Shine = keyframes`
   to {
-    transform: scale(1.01);
+    transform: scale(1.01) rotate(10deg);
   }
  `;
 
 const Sun = styled.text`
   font-size: ${Sizes.Sun}vmin;
 
-  animation: ${Shine} 4s infinite alternate;
+  animation: ${Shine} 1s infinite alternate;
+  transform-origin: center;
 `;
 
 function Component() {
@@ -26,7 +27,7 @@ function Component() {
     let bbox = planetRef.current.getBBox()
 
     setX((size.width - bbox.width) / 2)
-    // setY((size.height + bbox.height) / 2)
+    setY((size.height + bbox.height / 2) / 2)
   }, [size]);
 
   return (
