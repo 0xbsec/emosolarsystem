@@ -11,7 +11,7 @@ const Shine = keyframes`
  `;
 
 const Sun = styled.text`
-  font-size: ${Sizes.Sun}px;
+  font-size: ${Sizes.Sun}vmin;
 
   animation: ${Shine} 4s infinite alternate;
 `;

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import styled, {keyframes} from 'styled-components'
 
-import {Sizes, Distances} from './Config';
+import {Sizes} from './Config';
 import {circlePath, useWindowSize} from './AnimationHelpers';
 
 const Moon = styled.text`
-  font-size: ${Sizes.Moon}px;
+  font-size: ${Sizes.Moon}vmin;
 `;
 
 function Component() {
@@ -43,7 +43,7 @@ function Component() {
       <animateMotion
         dur="1.2s"
         repeatCount="indefinite"
-        path={circlePath(75)}
+        path={circlePath(Math.min(size.width, size.height) / 10)}
       />
       {IMAGES[currentImgIdx]}
     </Moon>

@@ -1,4 +1,4 @@
-const EARTH_SIZE = 50;
+const EARTH_SIZE = 5;
 
 export const Sizes = {
   Earth: EARTH_SIZE,
@@ -6,7 +6,7 @@ export const Sizes = {
   Sun: 4 * EARTH_SIZE
 }
 
-export const Distances = {
-  Moon: 10,
-  Earth: 4
-}
+// export const Distances = {
+//   Moon: 10,
+//   Earth: 4
+// }

@@ -6,7 +6,7 @@ import Moon from './Moon';
 import {circlePath, useWindowSize} from './AnimationHelpers';
 
 const Earth = styled.text`
-  font-size: ${Sizes.Earth}px;
+  font-size: ${Sizes.Earth}vmin;
 `;
 
 function Component() {
@@ -44,7 +44,7 @@ function Component() {
         <animateMotion
           dur="10s"
           repeatCount="indefinite"
-          path={circlePath(300)}
+          path={circlePath(Math.min(size.width, size.height) / 3)}
         />
 
         <Moon />
