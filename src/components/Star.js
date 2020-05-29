@@ -1,10 +1,7 @@
-import React, {useEffect, useState, useRef} from 'react';
-import styled, {keyframes} from 'styled-components'
+import React from 'react';
+import styled from 'styled-components'
 
-import {Sizes} from './Config';
-import {circlePath, useWindowSize, useRotation} from './AnimationHelpers';
-
-const rand = (n) => Math.floor(Math.random() * n)
+import {useWindowSize, rand} from './AnimationHelpers';
 
 function Component() {
   const size = useWindowSize()

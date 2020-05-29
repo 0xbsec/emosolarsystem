@@ -1,9 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
-import styled, {keyframes} from 'styled-components'
+import styled from 'styled-components'
 
-import {Sizes, Distances} from './Config';
+import {Sizes} from './Config';
 import Moon from './Moon';
-import {circlePath, useWindowSize, useRotation} from './AnimationHelpers';
+import Rocket from './Rocket';
+import {circlePath, useWindowSize, useRotation, rand} from './AnimationHelpers';
 
 const Earth = styled.text`
   font-size: ${Sizes.Earth}vmin;
@@ -17,6 +18,7 @@ function Component() {
   const planetRef = useRef(null)
   const [x, setX] = useState(size.width / 2)
   const [y, setY] = useState(size.height / 2)
+  const [rocketLaunch, setRocketLaunch] = useState(false)
   // tComputedTextLength()
 
   useEffect(() => {
@@ -26,8 +28,18 @@ function Component() {
     setY((size.height + bbox.height / 2) / 2)
   }, [size]);
 
+  useEffect(() => {
+    if (!rocketLaunch && rand(10) === 5) {
+      setRocketLaunch(true)
 
-// {IMAGES[currentImgIdx]}
+      const timer = setTimeout(function(){
+        setRocketLaunch(false)
+      }, 10000)
+
+      return () => clearTimeout(timer);
+    }
+  }, [currentImg]);
+
 
   return (
       <g id="earth-moon">
@@ -42,6 +54,8 @@ function Component() {
         />
 
         <Moon />
+
+        {rocketLaunch && <Rocket />}
       </g>
   );
 }

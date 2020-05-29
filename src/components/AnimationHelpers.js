@@ -49,3 +49,5 @@ export const useRotation = (delay, images) => {
 
   return images[currentImgIdx]
 }
+
+export const rand = (n) => Math.floor(Math.random() * n)
